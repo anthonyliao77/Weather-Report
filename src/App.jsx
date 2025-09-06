@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+
 // --- Services ---
-const API_KEY = '51b8759230ec668e9e8c777f2e07f2c6';
+const api_key = import.meta.env.VITE_API_KEY;
 const API_BASE = 'https://api.openweathermap.org/data/2.5/';
 
 const fetchWeather = async (city) => {
-  const response = await fetch(`${API_BASE}weather?q=${city}&appid=${API_KEY}&units=metric`);
+  const response = await fetch(`${API_BASE}weather?q=${city}&appid=${api_key}&units=metric`);
   if (!response.ok) {
     throw new Error('Weather data not found');
   }
@@ -158,7 +159,7 @@ const WeatherDisplay = ({ data }) => {
   );
 };
 
-// --- Main App Component ---
+// --- Main App Component --- 
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
